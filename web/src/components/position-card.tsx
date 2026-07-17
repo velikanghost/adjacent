@@ -1,5 +1,6 @@
 import type { Position } from "@adjacent/shared";
 import { RiskBadge } from "./risk-badge";
+import { IlCurve } from "./il-curve";
 import { RISK_STYLES } from "@/lib/risk";
 import { formatToken, formatUsd, humanize } from "@/lib/format";
 import { cn } from "@/lib/utils";
@@ -42,6 +43,27 @@ export function PositionCard({ position }: { position: Position }) {
           ))}
         </div>
 
+        {position.rewards.length > 0 && (
+          <div className="mt-4 border-t border-hairline pt-3">
+            <div className="font-mono text-[9px] uppercase tracking-[0.2em] text-dim">
+              Uncollected fees
+            </div>
+            <div className="mt-1.5 space-y-1">
+              {position.rewards.map((reward) => (
+                <div
+                  key={`${reward.address}:${reward.symbol}`}
+                  className="flex items-center justify-between font-mono text-xs"
+                >
+                  <span className="text-safe">
+                    +{formatToken(reward.amountFormatted)} {reward.symbol}
+                  </span>
+                  <span className="text-steel">{formatUsd(reward.valueUSD)}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
         {metrics.length > 0 && (
           <dl className="mt-4 grid grid-cols-2 gap-x-4 gap-y-2 border-t border-hairline pt-3">
             {metrics.map(([key, value]) => (
@@ -53,6 +75,10 @@ export function PositionCard({ position }: { position: Position }) {
               </div>
             ))}
           </dl>
+        )}
+
+        {position.type === "lp" && position.ilCurve && position.ilCurve.length > 0 && (
+          <IlCurve points={position.ilCurve} />
         )}
 
         <p className="mt-4 text-xs leading-relaxed text-steel">

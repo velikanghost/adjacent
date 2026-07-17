@@ -12,6 +12,9 @@ export const ADDRESSES = {
   multicall3: '0xcA11bde05977b3631167028862bE2a173976CA11',
   wmon: '0x3bd359C1119dA7Da1D913D1C4D2B7c461115433A',
   usdc: '0x754704Bc059F8C67012fEd69BC8A327a5aafb603',
+  usdt: '0xe7cd86e13AC4309349F30B3435a9d337750fC82D',
+  weth: '0xEE8c0E9f1BFFb4Eb878d8f15f368A02a35481242',
+  wbtc: '0x0555E30da8f98308EdB960aa94C0Db47230d2B9c',
   /** ERC-4626 `asset()` sentinel meaning the underlying is native MON. */
   nativeSentinel: '0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE',
   shmonad: '0x1B68626dCa36c7fE922fD2d55E4f631d962dE19c',
@@ -45,4 +48,7 @@ export const PYTH_FEED_IDS = {
 export const TOKEN_TO_PYTH_FEED: Record<string, Hex> = {
   [ADDRESSES.wmon.toLowerCase()]: PYTH_FEED_IDS.MON_USD,
   [ADDRESSES.usdc.toLowerCase()]: PYTH_FEED_IDS.USDC_USD,
+  [ADDRESSES.usdt.toLowerCase()]: PYTH_FEED_IDS.USDT_USD,
+  [ADDRESSES.weth.toLowerCase()]: PYTH_FEED_IDS.WETH_USD,
+  [ADDRESSES.wbtc.toLowerCase()]: PYTH_FEED_IDS.WBTC_USD,
 }

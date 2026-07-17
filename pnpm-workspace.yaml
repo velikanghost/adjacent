@@ -5,6 +5,7 @@ packages:
 
 allowBuilds:
   '@reown/appkit': false
+  '@scarf/scarf': false
   keccak: false
   sharp: false
   unrs-resolver: false
