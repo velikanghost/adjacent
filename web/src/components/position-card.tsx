@@ -1,6 +1,7 @@
 import type { Position } from "@adjacent/shared";
 import { RiskBadge } from "./risk-badge";
 import { IlCurve } from "./il-curve";
+import { ExplainPanel } from "./explain-panel";
 import { RISK_STYLES } from "@/lib/risk";
 import { formatToken, formatUsd, humanize } from "@/lib/format";
 import { cn } from "@/lib/utils";
@@ -84,6 +85,8 @@ export function PositionCard({ position }: { position: Position }) {
         <p className="mt-4 text-xs leading-relaxed text-steel">
           {position.risk.reason}
         </p>
+
+        <ExplainPanel position={position} />
       </div>
     </article>
   );

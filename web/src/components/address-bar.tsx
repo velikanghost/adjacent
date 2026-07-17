@@ -4,7 +4,11 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 
 const ADDRESS_RE = /^0x[a-fA-F0-9]{40}$/;
-const DEMO_ADDRESS = "0xE43fF0bF1e0FD5eF576Fad9699812A470009fFC4";
+
+const DEMOS: { label: string; address: string }[] = [
+  { label: "shMON whale", address: "0xE43fF0bF1e0FD5eF576Fad9699812A470009fFC4" },
+  { label: "Uniswap LP", address: "0xcbF323be43eF0f3A92eCBC0980f427cBa45f0866" },
+];
 
 export function AddressBar({ onSubmit }: { onSubmit: (address: string) => void }) {
   const [value, setValue] = useState("");
@@ -36,16 +40,24 @@ export function AddressBar({ onSubmit }: { onSubmit: (address: string) => void }
           View
         </Button>
       </div>
-      <button
-        type="button"
-        onClick={() => {
-          setValue(DEMO_ADDRESS);
-          onSubmit(DEMO_ADDRESS);
-        }}
-        className="self-start font-mono text-[11px] uppercase tracking-[0.2em] text-steel transition-colors hover:text-brand"
-      >
-        ↳ Try a demo whale
-      </button>
+      <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
+        <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-dim">
+          Try a demo:
+        </span>
+        {DEMOS.map((demo) => (
+          <button
+            key={demo.address}
+            type="button"
+            onClick={() => {
+              setValue(demo.address);
+              onSubmit(demo.address);
+            }}
+            className="font-mono text-[11px] uppercase tracking-[0.2em] text-steel transition-colors hover:text-brand"
+          >
+            ↳ {demo.label}
+          </button>
+        ))}
+      </div>
     </form>
   );
 }

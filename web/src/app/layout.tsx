@@ -8,6 +8,8 @@ const archivo = Archivo({ subsets: ['latin'], variable: '--font-archivo' })
 const bigShoulders = Big_Shoulders({
   subsets: ['latin'],
   variable: '--font-big-shoulders',
+  adjustFontFallback: false,
+  fallback: ['Arial Narrow', 'sans-serif'],
 })
 const martianMono = Martian_Mono({
   subsets: ['latin'],

@@ -6,6 +6,7 @@ import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { PositionsModule } from './positions/positions.module';
+import { ExplainModule } from './explain/explain.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { PositionsModule } from './positions/positions.module';
     }),
     ThrottlerModule.forRoot([{ ttl: 60_000, limit: 60 }]),
     PositionsModule,
+    ExplainModule,
   ],
   controllers: [AppController],
   providers: [AppService, { provide: APP_GUARD, useClass: ThrottlerGuard }],
