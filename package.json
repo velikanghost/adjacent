@@ -1,0 +1,13 @@
+{
+  "name": "adjacent",
+  "version": "0.0.0",
+  "private": true,
+  "packageManager": "pnpm@11.1.0",
+  "scripts": {
+    "build:shared": "pnpm --filter @adjacent/shared build",
+    "build": "pnpm --filter @adjacent/shared build && pnpm --filter api build && pnpm --filter web build",
+    "dev:shared": "pnpm --filter @adjacent/shared dev",
+    "dev:api": "pnpm --filter api start:dev",
+    "dev:web": "pnpm --filter web dev"
+  }
+}

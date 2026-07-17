@@ -1,0 +1,19 @@
+packages:
+  - web
+  - api
+  - shared
+
+allowBuilds:
+  '@reown/appkit': false
+  keccak: false
+  sharp: false
+  unrs-resolver: false
+
+# Decision on packages with install build-scripts: don't run them. sharp
+# (Next image optim, has a wasm fallback) and unrs-resolver were already
+# ignored by create-next-app; @reown/appkit's postinstall isn't needed for a
+# dapp integration. Listing them here resolves pnpm 11's build-script prompt.
+ignoredBuiltDependencies:
+  - '@reown/appkit'
+  - sharp
+  - unrs-resolver

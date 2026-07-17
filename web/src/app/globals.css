@@ -1,0 +1,126 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  /* shadcn semantic tokens */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  /* adjacent palette (dark editorial / broadcast-tech) */
+  --color-canvas: var(--canvas);
+  --color-panel: var(--panel);
+  --color-panel-2: var(--panel-2);
+  --color-row: var(--row);
+  --color-hairline: var(--hairline);
+  --color-hairline-soft: var(--hairline-soft);
+  --color-hairline-2: var(--hairline-2);
+  --color-brand: var(--brand);
+  --color-amber: var(--amber);
+  --color-bone: var(--bone);
+  --color-strong: var(--strong);
+  --color-mid: var(--mid);
+  --color-steel: var(--steel);
+  --color-dim: var(--dim);
+  --color-faint: var(--faint);
+  --color-safe: var(--safe);
+  --color-watch: var(--watch);
+  --color-danger: var(--danger);
+
+  /* fonts */
+  --font-sans: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-martian-mono), ui-monospace, monospace;
+  --font-heading: var(--font-big-shoulders), var(--font-archivo), sans-serif;
+
+  /* radius scale (tight) */
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+}
+
+:root {
+  --radius: 0.5rem;
+
+  /* raw palette */
+  --canvas: #060607;
+  --background: #0b0b0c;
+  --panel-2: #0e0e0f;
+  --panel: #141416;
+  --row: #17171a;
+  --hairline-soft: #1a1a1c;
+  --hairline: #202023;
+  --hairline-2: #242428;
+  --brand: #ff3b30;
+  --amber: #e8a93c;
+  --bone: #f4f1ea;
+  --strong: #e2e2e4;
+  --mid: #c6c6ca;
+  --steel: #8a8a90;
+  --dim: #5e5e64;
+  --faint: #45454a;
+  --safe: #34c77b;
+  --watch: #e8a93c;
+  --danger: #ff3b30;
+
+  /* shadcn semantic mapping onto the palette */
+  --foreground: var(--bone);
+  --card: var(--panel);
+  --card-foreground: var(--bone);
+  --popover: var(--panel);
+  --popover-foreground: var(--bone);
+  --primary: var(--bone);
+  --primary-foreground: var(--background);
+  --secondary: var(--row);
+  --secondary-foreground: var(--bone);
+  --muted: var(--row);
+  --muted-foreground: var(--steel);
+  --accent: var(--hairline-2);
+  --accent-foreground: var(--bone);
+  --destructive: var(--brand);
+  --border: var(--hairline);
+  --input: var(--hairline-2);
+  --ring: var(--brand);
+  --chart-1: #d4d4d4;
+  --chart-2: #8a8a90;
+  --chart-3: #5e5e64;
+  --chart-4: #404044;
+  --chart-5: #26262a;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+  }
+}
