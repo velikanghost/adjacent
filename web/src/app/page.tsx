@@ -1,16 +1,24 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
+import { useAppKitAccount } from "@reown/appkit/react";
 import type { PortfolioError } from "@adjacent/shared";
 import { fetchPortfolio } from "@/lib/api";
 import { SiteHeader } from "@/components/site-header";
 import { AddressBar } from "@/components/address-bar";
 import { PortfolioSummary } from "@/components/portfolio-summary";
 import { PositionCard } from "@/components/position-card";
+import { StakePanel } from "@/components/stake-panel";
 
 export default function Home() {
   const [address, setAddress] = useState("");
+  const { address: connected, isConnected } = useAppKitAccount();
+
+  // When a wallet connects, load its address automatically.
+  useEffect(() => {
+    if (isConnected && connected) setAddress(connected);
+  }, [isConnected, connected]);
 
   const { data, isFetching, isError, error } = useQuery({
     queryKey: ["portfolio", address],
@@ -39,6 +47,14 @@ export default function Home() {
         <div className="mb-10 max-w-2xl">
           <AddressBar onSubmit={setAddress} />
         </div>
+
+        {isConnected &&
+          connected &&
+          address.toLowerCase() === connected.toLowerCase() && (
+            <div className="mb-8 max-w-2xl">
+              <StakePanel address={connected as `0x${string}`} />
+            </div>
+          )}
 
         {address.length === 0 && <IdlePrompt />}
         {isFetching && <LoadingState />}

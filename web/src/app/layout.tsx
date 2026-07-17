@@ -1,8 +1,9 @@
 import type { Metadata } from 'next'
 import { Archivo, Big_Shoulders, Martian_Mono } from 'next/font/google'
+import { headers } from 'next/headers'
 import './globals.css'
 import { cn } from '@/lib/utils'
-import { Providers } from './providers'
+import { AppKitProvider } from '@/context'
 
 const archivo = Archivo({ subsets: ['latin'], variable: '--font-archivo' })
 const bigShoulders = Big_Shoulders({
@@ -22,11 +23,13 @@ export const metadata: Metadata = {
     'See every DeFi position across the Monad ecosystem and understand every risk in plain English.',
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  const cookies = (await headers()).get('cookie')
+
   return (
     <html
       lang="en"
@@ -38,7 +41,7 @@ export default function RootLayout({
       )}
     >
       <body className="min-h-dvh bg-background font-sans text-foreground">
-        <Providers>{children}</Providers>
+        <AppKitProvider cookies={cookies}>{children}</AppKitProvider>
       </body>
     </html>
   )

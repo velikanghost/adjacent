@@ -13,10 +13,13 @@ export const ERC4626_ABI = [
   'function asset() view returns (address)',
   'function convertToAssets(uint256 shares) view returns (uint256)',
   'function convertToShares(uint256 assets) view returns (uint256)',
+  'function previewDeposit(uint256 assets) view returns (uint256 shares)',
   'function totalAssets() view returns (uint256)',
   'function balanceOf(address owner) view returns (uint256)',
   'function decimals() view returns (uint8)',
   'function symbol() view returns (string)',
+  // shMONAD is a native-MON ERC-4626: deposit is payable (msg.value = assets).
+  'function deposit(uint256 assets, address receiver) payable returns (uint256 shares)',
 ] as const
 
 export const UNISWAP_V3_FACTORY_ABI = [

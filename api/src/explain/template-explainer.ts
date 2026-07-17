@@ -8,7 +8,7 @@ const usd = (value: number | null): string =>
 /**
  * Deterministic, always-available explainer. Produces grounded plain-English
  * text purely from the position's computed numbers — the $0 base layer and the
- * fallback whenever Groq is unavailable. No model, so nothing can be invented.
+ * fallback whenever Groq is unavailable.
  */
 @Injectable()
 export class TemplateExplainer {

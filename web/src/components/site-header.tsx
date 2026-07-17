@@ -1,3 +1,5 @@
+import { ConnectButton } from "./connect-button";
+
 export function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 border-b border-hairline bg-background/80 backdrop-blur">
@@ -11,10 +13,13 @@ export function SiteHeader() {
             Monad DeFi Copilot
           </span>
         </div>
-        <span className="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.2em] text-steel">
-          <span className="size-1.5 rounded-full bg-safe" />
-          Mainnet
-        </span>
+        <div className="flex items-center gap-4">
+          <span className="hidden items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.2em] text-steel sm:inline-flex">
+            <span className="size-1.5 rounded-full bg-safe" />
+            Mainnet
+          </span>
+          <ConnectButton />
+        </div>
       </div>
     </header>
   );

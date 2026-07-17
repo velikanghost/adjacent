@@ -35,8 +35,8 @@ async function bootstrap() {
 
   const logger = new Logger('Bootstrap');
   const baseUrl = `http://localhost:${port}`;
-  logger.log(`adjacent API running at ${baseUrl}`);
-  logger.log(`Swagger docs at ${baseUrl}/docs`);
+  logger.debug(`adjacent API running at ${baseUrl}`);
+  logger.debug(`Swagger docs at ${baseUrl}/docs`);
 }
 
 void bootstrap();
