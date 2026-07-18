@@ -10,7 +10,10 @@ const metadata = {
   name: "adjacent",
   description:
     "Monad DeFi copilot — see every position, understand every risk.",
-  url: "http://localhost:3000",
+  url:
+    typeof window !== "undefined"
+      ? window.location.origin
+      : "http://localhost:3000",
   icons: ["https://avatars.githubusercontent.com/u/179229932"],
 };
 

@@ -4,6 +4,7 @@ import { headers } from 'next/headers'
 import './globals.css'
 import { cn } from '@/lib/utils'
 import { AppKitProvider } from '@/context'
+import { SiteHeader } from '@/components/site-header'
 
 const archivo = Archivo({ subsets: ['latin'], variable: '--font-archivo' })
 const bigShoulders = Big_Shoulders({
@@ -41,7 +42,12 @@ export default async function RootLayout({
       )}
     >
       <body className="min-h-dvh bg-background font-sans text-foreground">
-        <AppKitProvider cookies={cookies}>{children}</AppKitProvider>
+        <AppKitProvider cookies={cookies}>
+          <div className="flex min-h-dvh flex-col bg-background">
+            <SiteHeader />
+            {children}
+          </div>
+        </AppKitProvider>
       </body>
     </html>
   )

@@ -7,6 +7,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { PositionsModule } from './positions/positions.module';
 import { ExplainModule } from './explain/explain.module';
+import { CampaignsModule } from './campaigns/campaigns.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { ExplainModule } from './explain/explain.module';
     ThrottlerModule.forRoot([{ ttl: 60_000, limit: 60 }]),
     PositionsModule,
     ExplainModule,
+    CampaignsModule,
   ],
   controllers: [AppController],
   providers: [AppService, { provide: APP_GUARD, useClass: ThrottlerGuard }],

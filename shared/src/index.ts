@@ -1,5 +1,6 @@
 export * from './types/address'
 export * from './positions/model'
+export * from './campaigns/model'
 export * from './protocols/addresses'
 export * from './protocols/abis'
 export * from './pricing/pyth'

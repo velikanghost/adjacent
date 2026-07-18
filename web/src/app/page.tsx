@@ -5,7 +5,6 @@ import { useQuery } from "@tanstack/react-query";
 import { useAppKitAccount } from "@reown/appkit/react";
 import type { PortfolioError } from "@adjacent/shared";
 import { fetchPortfolio } from "@/lib/api";
-import { SiteHeader } from "@/components/site-header";
 import { AddressBar } from "@/components/address-bar";
 import { PortfolioSummary } from "@/components/portfolio-summary";
 import { PositionCard } from "@/components/position-card";
@@ -29,9 +28,7 @@ export default function Home() {
   const showData = data && !isFetching;
 
   return (
-    <div className="flex min-h-dvh flex-col bg-background">
-      <SiteHeader />
-      <main className="mx-auto w-full max-w-5xl flex-1 px-5 py-8 lg:px-8 lg:py-12">
+    <main className="mx-auto w-full max-w-5xl flex-1 px-5 py-8 lg:px-8 lg:py-12">
         <div className="mb-8 max-w-2xl">
           <h1 className="font-heading text-3xl font-extrabold uppercase leading-[0.95] tracking-tight text-bone lg:text-4xl">
             See every position.
@@ -74,8 +71,7 @@ export default function Home() {
               {data.errors.length > 0 && <ErrorsNote errors={data.errors} />}
             </div>
           ))}
-      </main>
-    </div>
+    </main>
   );
 }
 
